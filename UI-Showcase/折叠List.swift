@@ -11,13 +11,13 @@ import SwiftUI
 struct 折叠List: View {
     init() {
         /// 设置 UITableViewHeaderFooterView 的 颜色, 缺点是: 这个设置是 全局的....
-        UITableViewHeaderFooterView.appearance().backgroundColor = UIColor(named: "黑白")
-        UITableViewHeaderFooterView.appearance().tintColor = UIColor(named: "黑白")
+//        UITableViewHeaderFooterView.appearance().backgroundColor = UIColor(named: "黑白")
+//        UITableViewHeaderFooterView.appearance().tintColor = UIColor(named: "黑白")
         ///
 
         /// List 的 background and tintColor
-        UITableView.appearance().backgroundColor = UIColor(named: "黑白")
-        UITableView.appearance().tintColor = UIColor(named: "黑白")
+//        UITableView.appearance().backgroundColor = UIColor(named: "黑白")
+//        UITableView.appearance().tintColor = UIColor(named: "黑白")
         ///
     }
 

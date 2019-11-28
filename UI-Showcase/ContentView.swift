@@ -15,34 +15,27 @@ extension String: View {
     }
 }
 
-class asdfafadsf {
-    class func asdf(){}
-}
-
 struct ContentView: View {
-    
-
     var body: some View {
+        
+//        return      ColorPicker(stateColor: .constant(.green))
         NavigationView {
             List {
-                Section {
-                    NavigationLink(destination: segment()) { "segment" }
-                    NavigationLink(destination: VStackView()) { "VStack" }
-                    NavigationLink(destination: HStackView()) { "HStack" }
-                    NavigationLink(destination: ZStackView()) { "ZStack" }
-                    NavigationLink(destination: imageScroll()) { "imageScroll" }
-                    NavigationLink(destination: diGui()) { "diGui" }
-                    NavigationLink(destination: coloringText()) { "coloringText" }
-                    NavigationLink(destination: 动态navigationBar()) { "动态navigationBar" }
-                    NavigationLink(destination: SwiftUIView()) { "SwiftUIView" }
-                    NavigationLink(destination: 折叠List()) { "折叠List" }
-                }
-                Section {
-                    NavigationLink(destination: segment()) { "segment" }
-                }
-            }.navigationBarTitle(Text("navigationTitle"), displayMode: .inline)
+                NavigationLink(destination: ViewModifers()) { "ViewModifers" }
+
+                Gestures()
+
+                Drawing_and_Animation()
+
+                View_Layout_and_Presentation()
+
+                Views_and_Controls()
+
+                UI_组件()
+            }
+
+            .navigationBarTitle(Text("navigationTitle"), displayMode: .automatic)
         }.navigationViewStyle(StackNavigationViewStyle())
-            
     }
 }
 
@@ -67,7 +60,7 @@ extension UINavigationController {
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let standardAppearance = UINavigationBarAppearance()
+        let standardAppearance = UINavigationBarAppearance()
 //
 //        standardAppearance.configureWithTransparentBackground() // 透明背景
 //
@@ -77,15 +70,74 @@ extension UINavigationController {
 //
 //        standardAppearance.setBackIndicatorImage(UIImage(named: "p3")!, transitionMaskImage: UIImage(named: "p3")!)
 //
-//        standardAppearance.configureWithOpaqueBackground() // 不透明背景
-//        standardAppearance.shadowImage = nil // 去掉 navigationBar 下面的阴影
-//        standardAppearance.shadowColor = .clear
-//        navigationBar.standardAppearance = standardAppearance
+        standardAppearance.configureWithOpaqueBackground() // 不透明背景
+        standardAppearance.shadowImage = nil // 去掉 navigationBar 下面的阴影
+        standardAppearance.shadowColor = .clear
+        navigationBar.standardAppearance = standardAppearance
 
-        navigationItem.titleView = UIHostingController(rootView: segment()).view
-        navigationItem.titleView = UIImageView(image: UIImage(named: "p1"))
-
-        topViewController?.addChild(self)
+//        navigationItem.titleView = UIHostingController(rootView: segment()).view
+//        navigationItem.titleView = UIImageView(image: UIImage(named: "p1"))
+//
+//        topViewController?.addChild(self)
     }
 }
 
+struct bor: ViewModifier {
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal)
+            .padding(.vertical, 5)
+            .background(
+                RoundedRectangle(cornerRadius: 10, style: RoundedCornerStyle.continuous)
+                    .stroke(Color.gray)
+                    .foregroundColor(.clear)
+            )
+            .padding()
+    }
+}
+
+struct 可折叠Section<Content: View>: View {
+    init(headerTitle: Text, @ViewBuilder content: @escaping () -> Content) {
+        self.content = content()
+        text = headerTitle
+    }
+
+    var content: Content
+    let text: Text
+    @State private var toggle: Bool = true
+
+    var body: some View {
+        Section(header: header) {
+            if self.toggle == true {
+                content
+            }
+        }
+    }
+
+    var header: some View {
+        HStack {
+            self.text.font(Font.title.bold())
+
+            Spacer()
+
+            Group {
+                self.toggle ?
+                    Image(systemName: "chevron.compact.down")
+                    :
+                    Image(systemName: "chevron.compact.up")
+            }.foregroundColor(.gray)
+        }
+        /// 挡住 Section header 的背景色, 这样只改变当前的 View,  挺好
+        .padding([.horizontal, .top])
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .foregroundColor(self.colorScheme == .dark ? .white : .black)
+        .background(Color("黑白"))
+        .edgesIgnoringSafeArea(.all)
+        .onTapGesture {
+            self.toggle.toggle()
+        }
+    }
+
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+}

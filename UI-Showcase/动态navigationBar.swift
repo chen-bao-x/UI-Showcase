@@ -92,7 +92,7 @@ struct __navigationBar_Previews: PreviewProvider {
 var longText: String = { () -> String in
 
     (0...100)
-        .map { "[ \($0) ]: hellohellohell\t\t\t\tohelo\n" }
+        .map { "[ \($0) ]: hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello" }
         .joined(separator: "")
 
 }()
