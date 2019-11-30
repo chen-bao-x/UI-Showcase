@@ -10,10 +10,8 @@ import SwiftUI
 
 struct ViewModifers: View {
     var body: some View {
-        VStack {
-            Text("hello")
-        }
-        .modifier(PropertyChanger())
+        Text("hello")
+            .modifier(PropertyChanger())
     }
 }
 

@@ -16,7 +16,6 @@ struct PropertyChanger: ViewModifier {
         ZStack {
             content
                 .modifier(contextToPopover(被弹出: { self.Changer }))
-//                .modifier(modifers(allProperty: self.allProperty))
 
                 .modifier(frame_ViewModifer(framePropertys: self.$allProperty.framePropertys))
                 .modifier(border_ViewModifer(border: $allProperty.boder))
@@ -27,24 +26,18 @@ struct PropertyChanger: ViewModifier {
         NavigationView {
             List {
                 NavigationLink(destination:
-                borderChanger(border: self.$allProperty.boder)) { "border" }
+                    borderChanger(border: self.$allProperty.boder)) { "border" }
                 NavigationLink(destination:
                     frame_PropertyChanger(f: self.$allProperty.framePropertys)) {
                     "frame"
                 }
             }
             .navigationBarTitle(Text("Property Changer"))
+            .navigationBarItems(leading: Button(action: { self.isPresented.wrappedValue.dismiss() }) { "完成" })
         }
     }
 
-//    struct modifers: ViewModifier {
-//        @Binding var allProperty: AllPropertys
-//        func body(content: _ViewModifier_Content<PropertyChanger.modifers>) -> some View {
-//            content
-//                .modifier(frame_ViewModifer(framePropertys: self.$allProperty.framePropertys))
-//                .modifier(border_ViewModifer(WhetherShow: $allProperty.WhetherShowBoder))
-//        }
-//    }
+    @Environment(\.presentationMode) var isPresented: Binding<PresentationMode>
 }
 
 struct contextToPopover<Content: View>: ViewModifier {
@@ -68,9 +61,6 @@ struct contextToPopover<Content: View>: ViewModifier {
                     "edit view modifier"
                 }
             }
-
-//            .sheet(isPresented: $sheetIsPresented, onDismiss: onDismiss) { self.content() }
-//            .onLongPressGesture { self.sheetIsPresented.toggle() }
     }
 
     @State private var sheetIsPresented: Bool = false

@@ -31,28 +31,25 @@ struct borderChanger: View {
             if self.border.useImage == false {
                 NavigationLink(destination: ColorPicker(stateColor: self.$border.color)) { "Color Picker" }
             }
-
-        }.navigationBarTitle(Text("Border Changer"))
+        }
+        .navigationBarTitle(Text("Border Changer"))
     }
-
-//    @State private var useImage: Bool = false
 }
 
 struct border_ViewModifer: ViewModifier {
-//    @Binding var WhetherShow: Bool
     @Binding var border: AllPropertys.Border
 
     func body(content: Content) -> some View {
         Group {
-            if self.border.WhetherShowBoder {
-                if self.border.useImage {
+            if self.border.WhetherShowBoder { /// 显示 border
+                if self.border.useImage { /// 使用 Image 作为 border
                     content
                         .border(ImagePaint(image: Image("p1")), width: self.border.width)
-                } else {
+                } else { ///  使用 Color 作为 border
                     content
                         .border(self.border.color, width: self.border.width)
                 }
-            } else {
+            } else { /// 不显示 border
                 content
             }
         }
