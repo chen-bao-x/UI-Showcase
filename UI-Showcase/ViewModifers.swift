@@ -6,11 +6,18 @@
 //  Copyright © 2019 chenbao. All rights reserved.
 //
 
+import Combine
 import SwiftUI
-
 struct ViewModifers: View {
+    @State private var sheeting: Bool = false
     var body: some View {
-        Text("hello")
+        VStack {
+            Text("18787765678")
+                .textContentType(.telephoneNumber)
+
+            Text("https://apple.com")
+                .textContentType(.URL)
+        }
             .modifier(PropertyChanger())
     }
 }

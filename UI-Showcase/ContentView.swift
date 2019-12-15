@@ -18,10 +18,21 @@ extension String: View {
 struct ContentView: View {
     var body: some View {
         
-//        return      ColorPicker(stateColor: .constant(.green))
         NavigationView {
             List {
                 NavigationLink(destination: ViewModifers()) { "ViewModifers" }
+                
+                
+                NavigationLink(destination:
+                    
+                    Photo().environmentObject(p.有权限么)
+                        .onDisappear(){
+                            print("onDisappear")
+                            
+                    }
+                
+                
+                ) { "Photos" }
 
                 Gestures()
 
@@ -35,7 +46,9 @@ struct ContentView: View {
             }
 
             .navigationBarTitle(Text("navigationTitle"), displayMode: .automatic)
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 

@@ -23,17 +23,13 @@ struct PropertyChanger: ViewModifier {
     }
 
     var Changer: some View {
-        NavigationView {
-            List {
-                NavigationLink(destination:
-                    borderChanger(border: self.$allProperty.boder)) { "border" }
-                NavigationLink(destination:
-                    frame_PropertyChanger(f: self.$allProperty.framePropertys)) {
-                    "frame"
-                }
+        List {
+            NavigationLink(destination:
+                borderChanger(border: self.$allProperty.boder)) { "border" }
+            NavigationLink(destination:
+                frame_PropertyChanger(f: self.$allProperty.framePropertys)) {
+                "frame"
             }
-            .navigationBarTitle(Text("Property Changer"))
-            .navigationBarItems(leading: Button(action: { self.isPresented.wrappedValue.dismiss() }) { "完成" })
         }
     }
 
@@ -53,7 +49,14 @@ struct contextToPopover<Content: View>: ViewModifier {
 
     func body(content: _ViewModifier_Content<contextToPopover>) -> some View {
         content
-            .popover(isPresented: $sheetIsPresented) { self.content() }
+            .sheet(isPresented: $sheetIsPresented) {
+                NavigationView {
+                    self.content()
+                        .navigationBarTitle(Text("Property Changer"))
+                        .navigationBarItems(trailing: Button(action: { self.sheetIsPresented.toggle() }) { "完成" })
+                }
+            }
+//            .popover(isPresented: $sheetIsPresented) { self.content() }
             .contextMenu {
                 Button(action: {
                     self.sheetIsPresented.toggle()

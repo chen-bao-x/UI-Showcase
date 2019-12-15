@@ -45,6 +45,7 @@
 		E75F92482390047B00B1BB46 /* border_ViewModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F92472390047B00B1BB46 /* border_ViewModifer.swift */; };
 		E75F924A239009D900B1BB46 /* AllPropertys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F9249239009D900B1BB46 /* AllPropertys.swift */; };
 		E75F924C23900E7300B1BB46 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75F924B23900E7300B1BB46 /* ColorPicker.swift */; };
+		E78143F5239CC9E400283A7A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78143F4239CC9E400283A7A /* Photo.swift */; };
 		E789FEA1235ABA1A0026BB4F /* defaultViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E789FEA0235ABA1A0026BB4F /* defaultViews.swift */; };
 		E79BC6CD232D2DE300B2FE36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79BC6CC232D2DE300B2FE36 /* AppDelegate.swift */; };
 		E79BC6CF232D2DE300B2FE36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79BC6CE232D2DE300B2FE36 /* SceneDelegate.swift */; };
@@ -62,6 +63,8 @@
 		E7BB6A20237450C400F73875 /* 动态navigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB6A1F237450C400F73875 /* 动态navigationBar.swift */; };
 		E7BB6A2223745ACB00F73875 /* coloringText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB6A2123745ACB00F73875 /* coloringText.swift */; };
 		E7CAF4A8238A46B2006171B6 /* 折叠List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CAF4A7238A46B2006171B6 /* 折叠List.swift */; };
+		E7E2CAE7239D19EE00851638 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2CAE6239D19ED00851638 /* PhotoManager.swift */; };
+		E7E2CAE9239FB14F00851638 /* PopPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2CAE8239FB14D00851638 /* PopPhotoPicker.swift */; };
 		E7E5A39923333A5A0065F9D8 /* PulltoRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */; };
 		E7E5A39B23333AC50065F9D8 /* in-app-Notifycation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */; };
 		E7E9329923367A9600994AA3 /* ZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E9329823367A9600994AA3 /* ZStackView.swift */; };
@@ -125,6 +128,7 @@
 		E75F92472390047B00B1BB46 /* border_ViewModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = border_ViewModifer.swift; sourceTree = "<group>"; };
 		E75F9249239009D900B1BB46 /* AllPropertys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPropertys.swift; sourceTree = "<group>"; };
 		E75F924B23900E7300B1BB46 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		E78143F4239CC9E400283A7A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		E789FEA0235ABA1A0026BB4F /* defaultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultViews.swift; sourceTree = "<group>"; };
 		E789FEA2235AC0710026BB4F /* UI-Showcase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UI-Showcase.entitlements"; sourceTree = "<group>"; };
 		E79BC6C9232D2DE300B2FE36 /* UI-Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI-Showcase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +153,8 @@
 		E7BB6A1F237450C400F73875 /* 动态navigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "动态navigationBar.swift"; sourceTree = "<group>"; };
 		E7BB6A2123745ACB00F73875 /* coloringText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coloringText.swift; sourceTree = "<group>"; };
 		E7CAF4A7238A46B2006171B6 /* 折叠List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "折叠List.swift"; sourceTree = "<group>"; };
+		E7E2CAE6239D19ED00851638 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		E7E2CAE8239FB14D00851638 /* PopPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPhotoPicker.swift; sourceTree = "<group>"; };
 		E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulltoRefresh.swift; sourceTree = "<group>"; };
 		E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "in-app-Notifycation.swift"; sourceTree = "<group>"; };
 		E7E9329823367A9600994AA3 /* ZStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackView.swift; sourceTree = "<group>"; };
@@ -270,6 +276,16 @@
 			name = ViewModifers;
 			sourceTree = "<group>";
 		};
+		E78143F3239CC9D700283A7A /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				E78143F4239CC9E400283A7A /* Photo.swift */,
+				E7E2CAE6239D19ED00851638 /* PhotoManager.swift */,
+				E7E2CAE8239FB14D00851638 /* PopPhotoPicker.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		E79BC6C0232D2DE300B2FE36 = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +309,7 @@
 		E79BC6CB232D2DE300B2FE36 /* UI-Showcase */ = {
 			isa = PBXGroup;
 			children = (
+				E78143F3239CC9D700283A7A /* Photo */,
 				E75F923D238FDCD500B1BB46 /* ViewModifers */,
 				E79BC6CC232D2DE300B2FE36 /* AppDelegate.swift */,
 				E79BC6CE232D2DE300B2FE36 /* SceneDelegate.swift */,
@@ -497,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78143F5239CC9E400283A7A /* Photo.swift in Sources */,
 				E79BF210238F862900C67F20 /* EditButton_UI_Showcase.swift in Sources */,
 				E7E5A39923333A5A0065F9D8 /* PulltoRefresh.swift in Sources */,
 				E75F9241238FDE6400B1BB46 /* frame_ViewModifer.swift in Sources */,
@@ -529,6 +547,7 @@
 				E7CAF4A8238A46B2006171B6 /* 折叠List.swift in Sources */,
 				E71E06D3238F7B560087A440 /* Button_UI_Showcase.swift in Sources */,
 				E7E9329D23367DD200994AA3 /* HStackView.swift in Sources */,
+				E7E2CAE7239D19EE00851638 /* PhotoManager.swift in Sources */,
 				E73024E32334F53500318C59 /* navigationBarImessageLike.swift in Sources */,
 				E75F9243238FE67300B1BB46 /* PropertyChanger.swift in Sources */,
 				E72EB5B923475C4200E3758C /* 捏合.swift in Sources */,
@@ -539,6 +558,7 @@
 				E75F92482390047B00B1BB46 /* border_ViewModifer.swift in Sources */,
 				E7E932A1233688F500994AA3 /* TextView.swift in Sources */,
 				E75F9201238FA44400B1BB46 /* UI_组件.swift in Sources */,
+				E7E2CAE9239FB14F00851638 /* PopPhotoPicker.swift in Sources */,
 				E75F91FF238FA3DD00B1BB46 /* View_Layout_and_Presentation.swift in Sources */,
 				E75F924A239009D900B1BB46 /* AllPropertys.swift in Sources */,
 				E71E06A4238D31E10087A440 /* Link.swift in Sources */,
@@ -721,6 +741,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UI-Showcase/Preview Content\"";
 				DEVELOPMENT_TEAM = J8C6W5Z6MT;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "UI-Showcase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -744,6 +765,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UI-Showcase/Preview Content\"";
 				DEVELOPMENT_TEAM = J8C6W5Z6MT;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "UI-Showcase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
