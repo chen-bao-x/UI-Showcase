@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "nav",
+        "repositoryURL": "https://github.com/chenba0/nav.git",
+        "state": {
+          "branch": null,
+          "revision": "1a021069648e8474f3f96b8cab4d6c045049acc1",
+          "version": "0.1.42"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
