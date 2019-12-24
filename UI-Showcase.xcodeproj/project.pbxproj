@@ -17,6 +17,7 @@
 		E71E06D1238F7ABA0087A440 /* Image_UI_Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71E06D0238F7ABA0087A440 /* Image_UI_Showcase.swift */; };
 		E71E06D3238F7B560087A440 /* Button_UI_Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71E06D2238F7B560087A440 /* Button_UI_Showcase.swift */; };
 		E72A9B4E2377CB8E003F9460 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72A9B4D2377CB8E003F9460 /* SwiftUIView.swift */; };
+		E72D563B23AA6AD50071DDC9 /* Introspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D563A23AA6AD50071DDC9 /* Introspect.swift */; };
 		E72EB5B923475C4200E3758C /* 捏合.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EB5B823475C4200E3758C /* 捏合.swift */; };
 		E73024E32334F53500318C59 /* navigationBarImessageLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73024E22334F53500318C59 /* navigationBarImessageLike.swift */; };
 		E73024E52335F6A200318C59 /* imageScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73024E42335F6A200318C59 /* imageScroll.swift */; };
@@ -67,6 +68,7 @@
 		E7E2CAE9239FB14F00851638 /* PopPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2CAE8239FB14D00851638 /* PopPhotoPicker.swift */; };
 		E7E5A39923333A5A0065F9D8 /* PulltoRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */; };
 		E7E5A39B23333AC50065F9D8 /* in-app-Notifycation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */; };
+		E7E6E56423ACD40000C33E6D /* halfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6E56323ACD40000C33E6D /* halfModal.swift */; };
 		E7E9329923367A9600994AA3 /* ZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E9329823367A9600994AA3 /* ZStackView.swift */; };
 		E7E9329B23367DA900994AA3 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E9329A23367DA900994AA3 /* VStackView.swift */; };
 		E7E9329D23367DD200994AA3 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E9329C23367DD200994AA3 /* HStackView.swift */; };
@@ -90,6 +92,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E7F2554D23AE416700C71713 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E704EE86232FC5EE00C548D1 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		E71E06A3238D31E10087A440 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
@@ -101,6 +116,7 @@
 		E71E06D0238F7ABA0087A440 /* Image_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_UI_Showcase.swift; sourceTree = "<group>"; };
 		E71E06D2238F7B560087A440 /* Button_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_UI_Showcase.swift; sourceTree = "<group>"; };
 		E72A9B4D2377CB8E003F9460 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		E72D563A23AA6AD50071DDC9 /* Introspect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introspect.swift; sourceTree = "<group>"; };
 		E72EB5B823475C4200E3758C /* 捏合.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "捏合.swift"; sourceTree = "<group>"; };
 		E73024E22334F53500318C59 /* navigationBarImessageLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationBarImessageLike.swift; sourceTree = "<group>"; };
 		E73024E42335F6A200318C59 /* imageScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageScroll.swift; sourceTree = "<group>"; };
@@ -157,6 +173,7 @@
 		E7E2CAE8239FB14D00851638 /* PopPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPhotoPicker.swift; sourceTree = "<group>"; };
 		E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulltoRefresh.swift; sourceTree = "<group>"; };
 		E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "in-app-Notifycation.swift"; sourceTree = "<group>"; };
+		E7E6E56323ACD40000C33E6D /* halfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = halfModal.swift; sourceTree = "<group>"; };
 		E7E9329823367A9600994AA3 /* ZStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackView.swift; sourceTree = "<group>"; };
 		E7E9329A23367DA900994AA3 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
 		E7E9329C23367DD200994AA3 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
@@ -309,11 +326,12 @@
 		E79BC6CB232D2DE300B2FE36 /* UI-Showcase */ = {
 			isa = PBXGroup;
 			children = (
-				E78143F3239CC9D700283A7A /* Photo */,
 				E75F923D238FDCD500B1BB46 /* ViewModifers */,
 				E79BC6CC232D2DE300B2FE36 /* AppDelegate.swift */,
 				E79BC6CE232D2DE300B2FE36 /* SceneDelegate.swift */,
 				E79BC6D0232D2DE300B2FE36 /* ContentView.swift */,
+				E7E6E56323ACD40000C33E6D /* halfModal.swift */,
+				E78143F3239CC9D700283A7A /* Photo */,
 				E75F9234238FC87A00B1BB46 /* Gestures */,
 				E72A9B4C2377CAA5003F9460 /* Combine */,
 				E71E06C7238F77DC0087A440 /* Views and Controls */,
@@ -363,6 +381,7 @@
 				E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */,
 				E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */,
 				E73024E22334F53500318C59 /* navigationBarImessageLike.swift */,
+				E72D563A23AA6AD50071DDC9 /* Introspect.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -387,6 +406,7 @@
 				E79BC6C5232D2DE300B2FE36 /* Sources */,
 				E79BC6C6232D2DE300B2FE36 /* Frameworks */,
 				E79BC6C7232D2DE300B2FE36 /* Resources */,
+				E7F2554D23AE416700C71713 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -442,7 +462,7 @@
 		E79BC6C1232D2DE300B2FE36 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = chenbao;
 				TargetAttributes = {
@@ -519,6 +539,7 @@
 				E7E5A39923333A5A0065F9D8 /* PulltoRefresh.swift in Sources */,
 				E75F9241238FDE6400B1BB46 /* frame_ViewModifer.swift in Sources */,
 				E75F920D238FAF6400B1BB46 /* ActionSheet_UI_Showcase.swift in Sources */,
+				E7E6E56423ACD40000C33E6D /* halfModal.swift in Sources */,
 				E79BF20E238F81A200C67F20 /* MenuButton_UI_Showcase.swift in Sources */,
 				E79BC6CD232D2DE300B2FE36 /* AppDelegate.swift in Sources */,
 				E75F91FA238F90DA00B1BB46 /* Slider_UI_Showcase.swift in Sources */,
@@ -549,6 +570,7 @@
 				E7E9329D23367DD200994AA3 /* HStackView.swift in Sources */,
 				E7E2CAE7239D19EE00851638 /* PhotoManager.swift in Sources */,
 				E73024E32334F53500318C59 /* navigationBarImessageLike.swift in Sources */,
+				E72D563B23AA6AD50071DDC9 /* Introspect.swift in Sources */,
 				E75F9243238FE67300B1BB46 /* PropertyChanger.swift in Sources */,
 				E72EB5B923475C4200E3758C /* 捏合.swift in Sources */,
 				E75F9213238FBA3F00B1BB46 /* Gradient_UI_Showcase.swift in Sources */,
@@ -735,6 +757,7 @@
 		E79BC6F4232D2DE900B2FE36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "UI-Showcase/UI-Showcase.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -759,6 +782,7 @@
 		E79BC6F5232D2DE900B2FE36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "UI-Showcase/UI-Showcase.entitlements";
 				CODE_SIGN_STYLE = Automatic;

@@ -14,11 +14,12 @@ struct ViewModifers: View {
         VStack {
             Text("18787765678")
                 .textContentType(.telephoneNumber)
+                .modifier(PropertyChanger())
 
             Text("https://apple.com")
                 .textContentType(.URL)
+                .modifier(PropertyChanger())
         }
-            .modifier(PropertyChanger())
     }
 }
 

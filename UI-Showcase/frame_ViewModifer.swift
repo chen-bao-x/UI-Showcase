@@ -49,6 +49,6 @@ struct frame_PropertyChanger: View {
                 }
             }
         }
-        .navigationBarTitle(Text("Frame Changer"))
+//        .navigationBarTitle(Text("Frame Changer"))
     }
 }

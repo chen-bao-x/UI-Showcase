@@ -6,6 +6,7 @@
 //  Copyright © 2019 chenbao. All rights reserved.
 //
 
+import nav
 import SwiftUI
 
 struct DragGesture_UI_Showcase: View {

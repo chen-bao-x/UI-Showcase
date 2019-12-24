@@ -12,7 +12,8 @@ struct borderChanger: View {
     @Binding var border: AllPropertys.Border
 
     var body: some View {
-        List {
+//        List {
+        VStack {
             Toggle(isOn: self.$border.WhetherShowBoder) {
                 "show border:  \(self.border.WhetherShowBoder ? "已显示" : "已隐藏")"
             }

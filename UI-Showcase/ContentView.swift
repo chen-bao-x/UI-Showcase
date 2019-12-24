@@ -16,23 +16,20 @@ extension String: View {
 }
 
 struct ContentView: View {
+    @State private var v: Float = 0
     var body: some View {
-        
         NavigationView {
             List {
+                NavigationLink(destination: halfModal()) { "halfModal" }
+
                 NavigationLink(destination: ViewModifers()) { "ViewModifers" }
-                
-                
+
                 NavigationLink(destination:
-                    
+
                     Photo().environmentObject(p.有权限么)
-                        .onDisappear(){
+                        .onDisappear {
                             print("onDisappear")
-                            
-                    }
-                
-                
-                ) { "Photos" }
+                }) { "Photos" }
 
                 Gestures()
 
@@ -45,11 +42,14 @@ struct ContentView: View {
                 UI_组件()
             }
 
-            .navigationBarTitle(Text("navigationTitle"), displayMode: .automatic)
+            .navigationBarTitle(Text(self.text), displayMode: .automatic)
         }
+
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
+
+    @State private var text: String = "updating"
+    @State private var searchBarIsActive: Bool = false
 }
 
 var b = (0, 1, "a")
@@ -96,7 +96,6 @@ extension UINavigationController {
 }
 
 struct bor: ViewModifier {
-
     func body(content: Content) -> some View {
         content
             .padding(.horizontal)
