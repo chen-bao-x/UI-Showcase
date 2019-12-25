@@ -61,6 +61,8 @@
 		E79BF210238F862900C67F20 /* EditButton_UI_Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79BF20F238F862900C67F20 /* EditButton_UI_Showcase.swift */; };
 		E79BF212238F8A0000C67F20 /* Toggle_UI_Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79BF211238F8A0000C67F20 /* Toggle_UI_Showcase.swift */; };
 		E79BF214238F8B1F00C67F20 /* Picker_UI_Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79BF213238F8B1F00C67F20 /* Picker_UI_Showcase.swift */; };
+		E7B30C3223B201CE00BC0B37 /* KeyboardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */; };
+		E7B30C3423B3896600BC0B37 /* GeastureConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B30C3323B3896600BC0B37 /* GeastureConflict.swift */; };
 		E7BB6A20237450C400F73875 /* 动态navigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB6A1F237450C400F73875 /* 动态navigationBar.swift */; };
 		E7BB6A2223745ACB00F73875 /* coloringText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB6A2123745ACB00F73875 /* coloringText.swift */; };
 		E7CAF4A8238A46B2006171B6 /* 折叠List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CAF4A7238A46B2006171B6 /* 折叠List.swift */; };
@@ -166,6 +168,8 @@
 		E79BF20F238F862900C67F20 /* EditButton_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton_UI_Showcase.swift; sourceTree = "<group>"; };
 		E79BF211238F8A0000C67F20 /* Toggle_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle_UI_Showcase.swift; sourceTree = "<group>"; };
 		E79BF213238F8B1F00C67F20 /* Picker_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker_UI_Showcase.swift; sourceTree = "<group>"; };
+		E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		E7B30C3323B3896600BC0B37 /* GeastureConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeastureConflict.swift; sourceTree = "<group>"; };
 		E7BB6A1F237450C400F73875 /* 动态navigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "动态navigationBar.swift"; sourceTree = "<group>"; };
 		E7BB6A2123745ACB00F73875 /* coloringText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coloringText.swift; sourceTree = "<group>"; };
 		E7CAF4A7238A46B2006171B6 /* 折叠List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "折叠List.swift"; sourceTree = "<group>"; };
@@ -330,7 +334,9 @@
 				E79BC6CC232D2DE300B2FE36 /* AppDelegate.swift */,
 				E79BC6CE232D2DE300B2FE36 /* SceneDelegate.swift */,
 				E79BC6D0232D2DE300B2FE36 /* ContentView.swift */,
+				E7B30C3323B3896600BC0B37 /* GeastureConflict.swift */,
 				E7E6E56323ACD40000C33E6D /* halfModal.swift */,
+				E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */,
 				E78143F3239CC9D700283A7A /* Photo */,
 				E75F9234238FC87A00B1BB46 /* Gestures */,
 				E72A9B4C2377CAA5003F9460 /* Combine */,
@@ -561,6 +567,7 @@
 				E75F923F238FDD1F00B1BB46 /* ViewModifers.swift in Sources */,
 				E75F9207238FAA0C00B1BB46 /* Form_UI_Showcase.swift in Sources */,
 				E75F91FC238F916700B1BB46 /* Stepper_UI_Showcase.swift in Sources */,
+				E7B30C3223B201CE00BC0B37 /* KeyboardAwareModifier.swift in Sources */,
 				E7E9329923367A9600994AA3 /* ZStackView.swift in Sources */,
 				E789FEA1235ABA1A0026BB4F /* defaultViews.swift in Sources */,
 				E75F9205238FA9A300B1BB46 /* ScrollView_UI_Showcase.swift in Sources */,
@@ -574,6 +581,7 @@
 				E75F9243238FE67300B1BB46 /* PropertyChanger.swift in Sources */,
 				E72EB5B923475C4200E3758C /* 捏合.swift in Sources */,
 				E75F9213238FBA3F00B1BB46 /* Gradient_UI_Showcase.swift in Sources */,
+				E7B30C3423B3896600BC0B37 /* GeastureConflict.swift in Sources */,
 				E73024E52335F6A200318C59 /* imageScroll.swift in Sources */,
 				E75F924C23900E7300B1BB46 /* ColorPicker.swift in Sources */,
 				E79BF212238F8A0000C67F20 /* Toggle_UI_Showcase.swift in Sources */,

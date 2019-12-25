@@ -17,19 +17,42 @@ extension String: View {
 
 struct ContentView: View {
     @State private var v: Float = 0
+
+    @State private var name: String = "adfdasfasfasf"
+
+    
     var body: some View {
+        return
+
+            
+
+        //        return VStack {
+//            Spacer()
+//            TextField("", text: $name)
+//                .padding()
+//                .background(
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .foregroundColor(.gray)
+//                )
+//                .modifier(KeyboardAwareModifier())
+//        }.edgesIgnoringSafeArea(Edge.Set.bottom)
+
         NavigationView {
             List {
+                NavigationLink(destination: GeastureConflict()) { "GeastureConflict" }
+                
                 NavigationLink(destination: halfModal()) { "halfModal" }
 
                 NavigationLink(destination: ViewModifers()) { "ViewModifers" }
 
-                NavigationLink(destination:
+                NavigationLink(
+                    destination:
 
                     Photo().environmentObject(p.有权限么)
                         .onDisappear {
                             print("onDisappear")
-                }) { "Photos" }
+                        }
+                ) { "Photos" }
 
                 Gestures()
 
@@ -152,4 +175,41 @@ struct 可折叠Section<Content: View>: View {
     }
 
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+}
+
+struct adsfadsfdasf: UIViewControllerRepresentable {
+    typealias UIViewControllerType = UIViewController
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<adsfadsfdasf>) -> adsfadsfdasf.UIViewControllerType {
+        controll()
+    }
+
+    func updateUIViewController(_ uiViewController: adsfadsfdasf.UIViewControllerType, context: UIViewControllerRepresentableContext<adsfadsfdasf>) {}
+
+    class controll: UIViewController {
+        var keyboardHeight: CGFloat!
+
+        var bottomConstraint: NSLayoutConstraint!
+
+        // This is to get the keyboyard height
+        override func viewWillAppear(_ animated: Bool) {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(keyboardWillShow),
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil
+            )
+        }
+
+        @objc func keyboardWillShow(_ notification: Notification) {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                keyboardHeight = keyboardRectangle.height
+                UIView.animate(withDuration: 0.5) {
+                    self.bottomConstraint.constant = self.keyboardHeight
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
 }
