@@ -81,7 +81,7 @@ struct contextToPopover<Content: View>: ViewModifier {
 //                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 }
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
-                .modifier(拖动())
+                .modifier(halfModalAndGesture())
             }
         }
         .onDisappear {
