@@ -11,20 +11,16 @@ import nav
 import SwiftUI
 
 /// 决定用这个来模仿地图里面的那个 东西
-///
-struct halfModal: View {
-    var body: some View {
-        ZStack {
-            sheetButton(destination: { modal() }) {
-                Text("hello world")
-            }.sheetButtonStyle(.button)
-            modal()
-        }.edgesIgnoringSafeArea(.bottom)
-
-            .frame(minWidth: 0, maxWidth: .infinity,
-                   minHeight: 0, maxHeight: .infinity)
-    }
-}
+/// 果然, 越花哨的东西, 写起来越麻烦😁
+//struct halfModal: View {
+//    var body: some View {
+//        VStack {
+//            sheetButton(destination: { halfModal() }) {
+//                Text("hello world")
+//            }.sheetButtonStyle(.button)
+//        }
+//    }
+//}
 
 struct searchBar_Previews: PreviewProvider {
     static var previews: some View {
@@ -32,27 +28,15 @@ struct searchBar_Previews: PreviewProvider {
     }
 }
 
-struct modal: View {
+struct halfModal: View {
     var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 30)
-                .frame(width: 100.0, height: 8)
-                .opacity(0.5)
-                .padding(.vertical)
-
+        ScrollView {
             VStack {
                 Text("hello 世界")
-                Spacer()
-            }
-            .frame(minWidth: 0, maxWidth: .infinity,
-                   minHeight: 0, maxHeight: .infinity)
+            }.frame(height: 400)
         }
-        .edgesIgnoringSafeArea(.bottom)
-        .frame(minWidth: 0, maxWidth: .infinity,
-               minHeight: 0, maxHeight: .infinity)
-
-        .background(Color.blue)
         .navigationBarTitle(Text(""), displayMode: .inline)
+
         .modifier(halfModalAndGesture())
     }
 }
@@ -61,62 +45,122 @@ struct halfModalAndGesture: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { (g: GeometryProxy) in
 
-            content.onAppear() {
-                self.soredGemotryRederSize = g.size
+            VStack {
+                self.pill
+                    .onAppear {
+                        self.storedGemotryReder_Size = g.size
+                    }
+
+                Spacer()
             }
         }
-//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .frame(width: UIScreen.main.bounds.width,
-               height: UIScreen.main.bounds.height)
 
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+        .background(Color.blue)
+        .overlay(
+            content
+                .offset(x: 0, y: 100)
+        )
         .offset(y: self.finalOffset)
 
         .animation(self.gestureOffset.height == 0 ? Animation.spring(response: Double(0.3)) : .none)
 
         .gesture(DragGesture()
             .updating(self.$gestureOffset) { v, s, _ in
+                s = v.translation /// 用于正在拖动时的 移动
 
-                s = v.translation
+                if pillLocation == nil {
+                    pillLocation = 0
+                }
+
+                /// predictedEndTranslation 更符合 用户的心理预期
+                pillLocation! += v.predictedEndTranslation.height
             }
 
-            .onChanged { (v: DragGesture.Value) in
+            .onChanged { (_: DragGesture.Value) in
 
-                if v.translation.height < 0 { /// 往上滑动
-                    self.halfOrTop.halfOrTop.toTop()
+//                print("[v.translation.height]:\t\(v.translation.height)") //
 
-                } else { /// 往下滑动
-                    self.halfOrTop.halfOrTop.toHalf()
+                let a = self.storedGemotryReder_Size.height / 3
+
+                if let location = pillLocation {
+                    if location > (a * 2) {
+                        ///  bottom
+                        self.halfState.halfOrTop.toBottom()
+                    } else if location > a, location < (a * 2) {
+                        ///  half
+                        self.halfState.halfOrTop.toHalf()
+                    } else {
+                        ///  top
+                        self.halfState.halfOrTop.toTop()
+                    }
                 }
             }
 
             .onEnded { (_: DragGesture.Value) in
-
-                self.touchBegingState.halfOrTop = self.halfOrTop.halfOrTop
+                self.touchBegingState.halfOrTop = self.halfState.halfOrTop
             }
         )
     }
 
     @GestureState private var gestureOffset: CGSize = .zero
+
+    /// 当用户停止滑动时 halfModal 的 偏移量
+    /// 根据
     var finalOffset: CGFloat {
-        if self.gestureOffset.height != 0 { /// 拖拽中
-            let a = f(self.soredGemotryRederSize.height,
-                      h: self.touchBegingState.halfOrTop)
+        nonmutating get {
+            if self.gestureOffset.height != 0 { /// 拖拽中
+                let a = f(self.storedGemotryReder_Size.height,
+                          h: self.touchBegingState.halfOrTop)
 
-            let height = a + self.gestureOffset.height
+                let height = a + self.gestureOffset.height
 
-            return height
+                return height
 
-        } else {
-            return f(self.soredGemotryRederSize.height, h: self.halfOrTop.halfOrTop)
+            } else {
+                return f(self.storedGemotryReder_Size.height, h: self.halfState.halfOrTop)
+            }
         }
     }
 
-    @State private var soredGemotryRederSize: CGSize = .zero
+    @State private var storedGemotryReder_Size: CGSize = .zero
 
-    private var halfOrTop = sdafadsfasdfdasfasfsdf()
+    private var halfState = sdafadsfasdfdasfasfsdf()
 
     private var touchBegingState = sdafadsfasdfdasfasfsdf()
 
+    private func f(_ c: CGFloat, h: HalfOrTop) -> CGFloat {
+        switch h {
+        case .top: return 0
+
+        case .half: return c / 2
+
+        case .bottom: return c - 100
+        }
+    }
+}
+
+/// 存储 pill  的位置
+private var pillLocation: CGFloat?
+
+extension halfModalAndGesture {
+    private var pill: some View {
+        GeometryReader { g -> RoundedRectangle in
+
+            let frame = g.frame(in: .global)
+            let l = frame.origin.y
+            pillLocation = l
+
+            //            print(l)
+            return RoundedRectangle(cornerRadius: 30)
+
+        }.frame(width: 100.0, height: 8)
+            .opacity(0.5)
+            .padding(.vertical)
+    }
+}
+
+extension halfModalAndGesture {
     private class sdafadsfasdfdasfasfsdf {
         var isFirst = true
 
@@ -124,35 +168,26 @@ struct halfModalAndGesture: ViewModifier {
     }
 
     private enum HalfOrTop {
-        case half
         case top
-
-        mutating func toggle() {
-            if self == .half {
-                self = .top
-            } else {
-                self = .half
-            }
-        }
+        case half
+        case bottom
 
         mutating func toHalf() {
-            if self == .top {
+            if self != .half {
                 self = .half
             }
         }
 
         mutating func toTop() {
-            if self == .half {
+            if self != .top {
                 self = .top
             }
         }
-    }
 
-    private func f(_ c: CGFloat, h: HalfOrTop) -> CGFloat {
-        switch h {
-        case .half: return c / 2
-
-        case .top: return 0
+        mutating func toBottom() {
+            if self != .bottom {
+                self = .bottom
+            }
         }
     }
 }

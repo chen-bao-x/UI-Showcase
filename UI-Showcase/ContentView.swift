@@ -8,7 +8,7 @@
 
 import Combine
 import SwiftUI
-
+import nav
 extension String: View {
     public var body: some View {
         Text(self)
@@ -59,6 +59,8 @@ struct ContentView: View {
         }
 
         .navigationViewStyle(StackNavigationViewStyle())
+        
+              .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
     }
 
     let uuu = UIRefreshControl()
