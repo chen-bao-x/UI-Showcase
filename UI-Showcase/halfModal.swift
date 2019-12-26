@@ -10,24 +10,14 @@ import Combine
 import nav
 import SwiftUI
 
-/// 决定用这个来模仿地图里面的那个 东西
-/// 果然, 越花哨的东西, 写起来越麻烦😁
-//struct halfModal: View {
-//    var body: some View {
-//        VStack {
-//            sheetButton(destination: { halfModal() }) {
-//                Text("hello world")
-//            }.sheetButtonStyle(.button)
-//        }
-//    }
-//}
-
 struct searchBar_Previews: PreviewProvider {
     static var previews: some View {
         halfModal()
     }
 }
 
+/// 决定用这个来模仿地图里面的那个 东西
+/// 果然, 越花哨的东西, 写起来越麻烦😁
 struct halfModal: View {
     var body: some View {
         ScrollView {
@@ -44,7 +34,7 @@ struct halfModal: View {
 struct halfModalAndGesture: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { (g: GeometryProxy) in
-
+            self.anthorGeter
             VStack {
                 self.pill
                     .onAppear {
@@ -67,7 +57,13 @@ struct halfModalAndGesture: ViewModifier {
 
         .gesture(DragGesture()
             .updating(self.$gestureOffset) { v, s, _ in
-                s = v.translation /// 用于正在拖动时的 移动
+
+                /// 滑到 顶部时, 就不需要在 滑动了
+                if let pill = pillLocation {
+                    if pill > 0 {
+                        s = v.translation /// 用于正在拖动时的 移动
+                    }
+                }
 
                 if pillLocation == nil {
                     pillLocation = 0
@@ -75,11 +71,13 @@ struct halfModalAndGesture: ViewModifier {
 
                 /// predictedEndTranslation 更符合 用户的心理预期
                 pillLocation! += v.predictedEndTranslation.height
+
+//                if let location = pillLocation {
+//                    self.fatherViewHeight = 1 - (location / self.storedGemotryReder_Size.height)
+//                }
             }
 
             .onChanged { (_: DragGesture.Value) in
-
-//                print("[v.translation.height]:\t\(v.translation.height)") //
 
                 let a = self.storedGemotryReder_Size.height / 3
 
@@ -138,6 +136,15 @@ struct halfModalAndGesture: ViewModifier {
         case .bottom: return c - 100
         }
     }
+
+//    @State private var midlePointHeight: CGFloat = 0
+    private var midlePointHeight: CGFloat {
+        if let location = pillLocation {
+            return 1 - (location / self.storedGemotryReder_Size.height)
+        }
+
+        return 0
+    }
 }
 
 /// 存储 pill  的位置
@@ -145,18 +152,27 @@ private var pillLocation: CGFloat?
 
 extension halfModalAndGesture {
     private var pill: some View {
-        GeometryReader { g -> RoundedRectangle in
+        HStack {
+            Spacer()
+
+//            LineView(fatherViewHeight: self.$fatherViewHeight)
+            LineView(fatherViewHeight: self.storedGemotryReder_Size.height)
+                .frame(width: 100, height: 20)
+                .padding()
+            Spacer()
+        }
+    }
+
+    private var anthorGeter: some View {
+        GeometryReader { g -> Color in
 
             let frame = g.frame(in: .global)
             let l = frame.origin.y
             pillLocation = l
 
-            //            print(l)
-            return RoundedRectangle(cornerRadius: 30)
-
-        }.frame(width: 100.0, height: 8)
-            .opacity(0.5)
-            .padding(.vertical)
+            print(l)
+            return Color.clear
+        }
     }
 }
 
@@ -189,5 +205,22 @@ extension halfModalAndGesture {
                 self = .bottom
             }
         }
+    }
+}
+
+
+extension UIBezierPath {
+    static func bezierPath(
+        controlPoint1X: Double = 0.680,
+        controlPoint1Y: Double = -0.550,
+        controlPoint2X: Double = 0.265,
+        controlPoint2Y: Double = 1.550
+    ) -> UIBezierPath {
+        
+        
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        path.addCurve(to: CGPoint(x: 1.0, y: -1.0), controlPoint1: CGPoint(x: controlPoint1X, y: -controlPoint1Y), controlPoint2: CGPoint(x: controlPoint2X, y: -controlPoint2Y))
+        return path
     }
 }
