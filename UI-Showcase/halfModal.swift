@@ -50,6 +50,7 @@ struct halfModalAndGesture: ViewModifier {
         .overlay(
             content
                 .offset(x: 0, y: 100)
+                .disabled(self.currnetHalfState.halfOrTop == .top ? false : true)
         )
         .offset(y: self.finalOffset)
 
@@ -84,19 +85,20 @@ struct halfModalAndGesture: ViewModifier {
                 if let location = pillLocation {
                     if location > (a * 2) {
                         ///  bottom
-                        self.halfState.halfOrTop.toBottom()
+                        self.currnetHalfState.halfOrTop.toBottom()
                     } else if location > a, location < (a * 2) {
                         ///  half
-                        self.halfState.halfOrTop.toHalf()
+                        self.currnetHalfState.halfOrTop.toHalf()
                     } else {
                         ///  top
-                        self.halfState.halfOrTop.toTop()
+                        self.currnetHalfState.halfOrTop.toTop()
                     }
                 }
             }
 
             .onEnded { (_: DragGesture.Value) in
-                self.touchBegingState.halfOrTop = self.halfState.halfOrTop
+
+                self.touchBegingState.halfOrTop = self.currnetHalfState.halfOrTop
             }
         )
     }
@@ -116,14 +118,14 @@ struct halfModalAndGesture: ViewModifier {
                 return height
 
             } else {
-                return f(self.storedGemotryReder_Size.height, h: self.halfState.halfOrTop)
+                return f(self.storedGemotryReder_Size.height, h: self.currnetHalfState.halfOrTop)
             }
         }
     }
 
     @State private var storedGemotryReder_Size: CGSize = .zero
 
-    private var halfState = sdafadsfasdfdasfasfsdf()
+    private var currnetHalfState = sdafadsfasdfdasfasfsdf()
 
     private var touchBegingState = sdafadsfasdfdasfasfsdf()
 
@@ -170,7 +172,7 @@ extension halfModalAndGesture {
             let l = frame.origin.y
             pillLocation = l
 
-            print(l)
+//            print(l)
             return Color.clear
         }
     }
@@ -208,7 +210,6 @@ extension halfModalAndGesture {
     }
 }
 
-
 extension UIBezierPath {
     static func bezierPath(
         controlPoint1X: Double = 0.680,
@@ -216,8 +217,6 @@ extension UIBezierPath {
         controlPoint2X: Double = 0.265,
         controlPoint2Y: Double = 1.550
     ) -> UIBezierPath {
-        
-        
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0.0, y: 0.0))
         path.addCurve(to: CGPoint(x: 1.0, y: -1.0), controlPoint1: CGPoint(x: controlPoint1X, y: -controlPoint1Y), controlPoint2: CGPoint(x: controlPoint2X, y: -controlPoint2Y))

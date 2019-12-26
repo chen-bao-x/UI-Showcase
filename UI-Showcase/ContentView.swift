@@ -7,8 +7,8 @@
 //
 
 import Combine
-import SwiftUI
 import nav
+import SwiftUI
 extension String: View {
     public var body: some View {
         Text(self)
@@ -21,8 +21,6 @@ struct ContentView: View {
     @State private var name: String = "adfdasfasfasf"
 
     var body: some View {
-
-
         NavigationView {
             List {
                 NavigationLink(destination: GeastureConflict()) { "GeastureConflict" }
@@ -50,17 +48,30 @@ struct ContentView: View {
 
                 UI_组件()
             }
+
             .introspectTableView(customize: { (u: UITableView) in
                 u.refreshControl = self.uuu
             })
 
             .navigationBarTitle(Text(self.text), displayMode: .automatic)
             .navigationBarItems(trailing: Button(action: { self.uuu.endRefreshing() }) { Text("tap") })
+
+            .introspectNavigationController(customize: { (n: UINavigationController) in
+                let standardAppearance = UINavigationBarAppearance()
+                standardAppearance.configureWithOpaqueBackground() // 不透明背景
+                standardAppearance.shadowImage = nil // 去掉 navigationBar 下面的阴影
+                standardAppearance.shadowColor = .clear
+                n.navigationBar.standardAppearance = standardAppearance
+
+                n.navigationBar.compactAppearance = standardAppearance
+
+                n.navigationBar.scrollEdgeAppearance = standardAppearance
+            })
         }
 
         .navigationViewStyle(StackNavigationViewStyle())
-        
-              .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
+
+        .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
     }
 
     let uuu = UIRefreshControl()
@@ -83,32 +94,6 @@ struct diGui: View {
         NavigationLink(destination: diGui()) {
             Text(" asfasdfasfasfd ")
         }
-    }
-}
-
-extension UINavigationController {
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let standardAppearance = UINavigationBarAppearance()
-//
-//        standardAppearance.configureWithTransparentBackground() // 透明背景
-//
-//        standardAppearance.configureWithDefaultBackground()
-//        standardAppearance.backgroundColor = nil
-//        standardAppearance.backgroundImage = UIImage(named: "p3")!
-//
-//        standardAppearance.setBackIndicatorImage(UIImage(named: "p3")!, transitionMaskImage: UIImage(named: "p3")!)
-//
-        standardAppearance.configureWithOpaqueBackground() // 不透明背景
-        standardAppearance.shadowImage = nil // 去掉 navigationBar 下面的阴影
-        standardAppearance.shadowColor = .clear
-        navigationBar.standardAppearance = standardAppearance
-
-//        navigationItem.titleView = UIHostingController(rootView: segment()).view
-//        navigationItem.titleView = UIImageView(image: UIImage(named: "p1"))
-//
-//        topViewController?.addChild(self)
     }
 }
 

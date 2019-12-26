@@ -338,8 +338,6 @@
 				E79BC6D0232D2DE300B2FE36 /* ContentView.swift */,
 				E7B30C3323B3896600BC0B37 /* GeastureConflict.swift */,
 				E7E6E56323ACD40000C33E6D /* halfModal.swift */,
-				E7B30C3523B48EFA00BC0B37 /* Line.Viewswift.swift */,
-				E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */,
 				E78143F3239CC9D700283A7A /* Photo */,
 				E75F9234238FC87A00B1BB46 /* Gestures */,
 				E72A9B4C2377CAA5003F9460 /* Combine */,
@@ -386,6 +384,8 @@
 		E7E9329E23367E9300994AA3 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				E7B30C3523B48EFA00BC0B37 /* Line.Viewswift.swift */,
+				E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */,
 				E704EE86232FC5EE00C548D1 /* Today.swift */,
 				E7E5A39A23333AC50065F9D8 /* in-app-Notifycation.swift */,
 				E7E5A39823333A5A0065F9D8 /* PulltoRefresh.swift */,
