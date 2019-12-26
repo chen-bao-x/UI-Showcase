@@ -6,9 +6,24 @@
 //  Copyright © 2019 chenbao. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
-import Combine
+struct KeyboardAwareModifieradfasf: View {
+    @State private var name = "dasfafasfsafasf"
+    var body: some View {
+         VStack {
+            Spacer()
+            TextField("", text: $name)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.gray)
+                )
+                .modifier(KeyboardAwareModifier())
+        }.edgesIgnoringSafeArea(Edge.Set.bottom)
+    }
+}
 
 struct KeyboardAwareModifier: ViewModifier {
     @State private var keyboardHeight: CGFloat = 0
@@ -32,11 +47,10 @@ struct KeyboardAwareModifier: ViewModifier {
             .padding(.bottom, keyboardHeight)
             .onReceive(keyboardHeightPublisher) { self.keyboardHeight = $0 }
 //            .animation(Animation.spring(response: 0.45, dampingFraction: 0.8, blendDuration: 4000.0))// MARK:  最接近的版本
-            
+        
 //            .animation(Animation.spring(response: 0.45, blendDuration: 1.0)) // MARK: 最接近的版本
-            
-            // .animation(Animation.spring())
-            
+        
+        // .animation(Animation.spring())
         
 //            .animation(Animation.interpolatingSpring(mass: Double(2.5),
 //                                                     stiffness: Double(1500),
@@ -91,5 +105,3 @@ extension View {
         return ModifiedContent(content: self, modifier: KeyboardAwareModifier())
     }
 }
-
-

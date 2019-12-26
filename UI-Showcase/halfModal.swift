@@ -10,9 +10,8 @@ import Combine
 import nav
 import SwiftUI
 
-/// 尽管已经做的不错了, 但是还是不够好. 参考 Twitter 的 halfModal, Twitter 的那个是 系统自带的.
-/// 做不到像 .sheet 那样的吧其他的视图都放到 halfModal 的后面
-/// `放弃`
+/// 决定用这个来模仿地图里面的那个 东西
+///
 struct halfModal: View {
     var body: some View {
         ZStack {

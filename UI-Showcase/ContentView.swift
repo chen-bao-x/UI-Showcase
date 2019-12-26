@@ -20,27 +20,13 @@ struct ContentView: View {
 
     @State private var name: String = "adfdasfasfasf"
 
-    
     var body: some View {
-        return
 
-            
-
-        //        return VStack {
-//            Spacer()
-//            TextField("", text: $name)
-//                .padding()
-//                .background(
-//                    RoundedRectangle(cornerRadius: 20)
-//                        .foregroundColor(.gray)
-//                )
-//                .modifier(KeyboardAwareModifier())
-//        }.edgesIgnoringSafeArea(Edge.Set.bottom)
 
         NavigationView {
             List {
                 NavigationLink(destination: GeastureConflict()) { "GeastureConflict" }
-                
+
                 NavigationLink(destination: halfModal()) { "halfModal" }
 
                 NavigationLink(destination: ViewModifers()) { "ViewModifers" }
@@ -64,12 +50,18 @@ struct ContentView: View {
 
                 UI_组件()
             }
+            .introspectTableView(customize: { (u: UITableView) in
+                u.refreshControl = self.uuu
+            })
 
             .navigationBarTitle(Text(self.text), displayMode: .automatic)
+            .navigationBarItems(trailing: Button(action: { self.uuu.endRefreshing() }) { Text("tap") })
         }
 
         .navigationViewStyle(StackNavigationViewStyle())
     }
+
+    let uuu = UIRefreshControl()
 
     @State private var text: String = "updating"
     @State private var searchBarIsActive: Bool = false
