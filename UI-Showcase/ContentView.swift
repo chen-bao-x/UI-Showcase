@@ -102,7 +102,7 @@ struct ContentView: View {
 
         .navigationViewStyle(StackNavigationViewStyle())
 
-//        .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
+        .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
     }
 
     let uuu = UIRefreshControl()

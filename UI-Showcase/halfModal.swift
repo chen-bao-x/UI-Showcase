@@ -38,6 +38,14 @@ struct halfModalAndGesture: ViewModifier {
                 s = v.translation /// 用于正在拖动时的 移动
             }
 
+            .onChanged { (v: DragGesture.Value) in
+                self.upOrDown.value = v.translation.height
+
+                self.upOrDown.startLocation = v.startLocation
+
+                self.upOrDown.currentLocation = v.location
+            }
+
             .onEnded { (v: DragGesture.Value) in
 
                 if self.gestureOffset.height < v.predictedEndTranslation.height {
@@ -87,18 +95,13 @@ struct halfModalAndGesture: ViewModifier {
 
     private var touchBegingState = stater()
 
+    private var upOrDown = UpOrDown()
+
     // MARK: - 当用户滑动时 halfModal 的 偏移量, 也就是上下移动
 
     var finalOffset: CGFloat {
         nonmutating get {
-//            print("[gestureOffset.height]:\t\(gestureOffset.height)")
             if self.gestureOffset.height != 0 { /// 拖拽中
-//                let a = f(self.storedGemotryReder_Size.height,
-//                          h: self.touchBegingState.halfOrTop)
-//                let height = a + self.gestureOffset.height
-//
-//                return height
-
                 let a = f(self.storedGemotryReder_Size.height,
                           h: self.touchBegingState.halfOrTop)
 
@@ -108,19 +111,17 @@ struct halfModalAndGesture: ViewModifier {
                     lastDragingLocating = a + self.gestureOffset.height
                 }
 
+                let re: CGFloat
+
                 if let pill = pillLocation, pill < 00 {
-                    let re = lastDragingLocating + ((height - lastDragingLocating) / 500)
-                    lastDragingLocating = re
-
-                    return re
-
+                    re = lastDragingLocating + ((height - lastDragingLocating) / 500)
                 } else {
-                    let re = lastDragingLocating + (height - lastDragingLocating)
-
-                    lastDragingLocating = re
-
-                    return re
+                    re = lastDragingLocating + (height - lastDragingLocating)
                 }
+
+                lastDragingLocating = re
+
+                return re
 
             } else {
                 return f(self.storedGemotryReder_Size.height, h: self.currnetHalfState.halfOrTop)
@@ -135,6 +136,40 @@ struct halfModalAndGesture: ViewModifier {
         case .half: return c / 2
 
         case .bottom: return c - 100
+        }
+    }
+
+    class UpOrDown {
+        internal var transcationHeight: CGFloat = 0
+
+        var startLocation: CGPoint = .zero
+
+        var currentLocation: CGPoint = .zero
+
+        var offset: CGFloat {
+            return self.currentLocation.y - startLocation.y
+        }
+
+        internal var value: CGFloat {
+            get {
+                self.transcationHeight
+            }
+            set {
+                if newValue < self.transcationHeight {
+                    self.upOrDown = .up
+                } else {
+                    self.upOrDown = .down
+                }
+
+                self.transcationHeight = newValue
+            }
+        }
+
+        internal var upOrDown: UpOrDown = .up
+
+        internal enum UpOrDown {
+            case up
+            case down
         }
     }
 }
@@ -270,46 +305,3 @@ struct MyTextPreferenceKey: PreferenceKey {
         value.append(contentsOf: nextValue())
     }
 }
-
-// extension halfModalAndGesture {
-//    private var g: DragGesture {
-//        DragGesture()
-//        .updating(self.$gestureOffset) { v, s, _ in
-//
-//            /// 滑到 顶部时, 就不需要在 滑动了
-//
-//            s = v.translation /// 用于正在拖动时的 移动
-//        }
-//
-//        .onChanged { (v: DragGesture.Value) in
-//            if pillLocation == nil {
-//                pillLocation = 0
-//            } else {
-//                /// predictedEndTranslation 更符合 用户的心理预期
-//                pillLocation! += v.predictedEndTranslation.height
-//            }
-//
-//            let a = self.storedGemotryReder_Size.height / 3
-//
-//            if let location = pillLocation {
-//                if location > (a * 2) {
-//                    ///  bottom
-//                    self.currnetHalfState.halfOrTop.toBottom()
-//                } else if location > a, location < (a * 2) {
-//                    ///  half
-//                    self.currnetHalfState.halfOrTop.toHalf()
-//                } else {
-//                    ///  top
-//                    self.currnetHalfState.halfOrTop.toTop()
-//                }
-//            }
-//        }
-//
-//        .onEnded { (_: DragGesture.Value) in
-//
-//            self.touchBegingState.halfOrTop = self.currnetHalfState.halfOrTop
-//
-//
-//        }
-//    }
-// }
