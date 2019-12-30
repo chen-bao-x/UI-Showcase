@@ -12,15 +12,12 @@ import SwiftUI
 
 struct halfModal: View {
     var body: some View {
-//        ScrollView {
         VStack {
-            Spacer()
+            Text("hello 世界")
             Text("hello 世界")
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         .background(Color.green)
-
-//        }
 
         .navigationBarTitle(Text(""), displayMode: .inline)
 
@@ -73,7 +70,6 @@ struct halfModalAndGesture: ViewModifier {
         .overlay(
             content
                 .offset(x: 0, y: 100)
-                .disabled(self.currnetHalfState.halfOrTop == .top ? false : true)
         )
 
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)

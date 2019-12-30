@@ -15,40 +15,14 @@ extension String: View {
     }
 }
 
+
+
 struct ContentView: View {
     @State private var v: Float = 0
 
     @State private var name: String = "adfdasfasfasf"
 
     var body: some View {
-//        return VStack {
-//                Spacer()
-//                TextField("title", text: .constant("helofdasfdsa"))
-//                asdfljasdsdfasfasdf {
-//                    VStack {
-//                        TextField("title", text: .constant("helofdasfdsa"))
-//                    }
-//
-//                    .background(Color.green)
-//                    .frame(width: 400, height: 400)
-//                }
-//            }
-
-//        .frame(width: 400, height: 400)
-//        .background(Color.blue)
-//        let a = Animation.default
-//        dump(a)
-//        let b = Animation.spring()
-//        dump(b)
-
-//        let c =  UIView.animate(withDuration: 0.5,
-//                     delay: 0,
-//                     usingSpringWithDamping: 1,
-//                     initialSpringVelocity: 1,
-//                     options: UIView.AnimationOptions.curveEaseInOut,
-//                     animations: {},
-//                     completion: T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void)
-
         NavigationView {
             List {
                 Group {
@@ -68,7 +42,7 @@ struct ContentView: View {
                             }
                     ) { "Photos" }
                 }
-                
+
                 Gestures()
 
                 Drawing_and_Animation()
@@ -102,8 +76,10 @@ struct ContentView: View {
 
         .navigationViewStyle(StackNavigationViewStyle())
 
-        .overlay(halfModal().edgesIgnoringSafeArea(Edge.Set.bottom))
+//        .overlay( halfModal().edgesIgnoringSafeArea(Edge.Set.bottom) )
     }
+
+    
 
     let uuu = UIRefreshControl()
 
