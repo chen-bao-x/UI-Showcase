@@ -169,7 +169,7 @@
 		E79BF20F238F862900C67F20 /* EditButton_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton_UI_Showcase.swift; sourceTree = "<group>"; };
 		E79BF211238F8A0000C67F20 /* Toggle_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle_UI_Showcase.swift; sourceTree = "<group>"; };
 		E79BF213238F8B1F00C67F20 /* Picker_UI_Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker_UI_Showcase.swift; sourceTree = "<group>"; };
-		E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		E7B30C3123B201CE00BC0B37 /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		E7B30C3323B3896600BC0B37 /* GeastureConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeastureConflict.swift; sourceTree = "<group>"; };
 		E7B30C3523B48EFA00BC0B37 /* Line.Viewswift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.Viewswift.swift; sourceTree = "<group>"; };
 		E7BB6A1F237450C400F73875 /* 动态navigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "动态navigationBar.swift"; sourceTree = "<group>"; };
@@ -477,6 +477,7 @@
 				TargetAttributes = {
 					E79BC6C8232D2DE300B2FE36 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1130;
 					};
 					E79BC6DE232D2DE900B2FE36 = {
 						CreatedOnToolsVersion = 11.0;
@@ -771,6 +772,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "UI-Showcase/UI-Showcase.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
@@ -786,6 +788,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chenbao.UI-Showcase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -796,6 +799,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "UI-Showcase/UI-Showcase.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;

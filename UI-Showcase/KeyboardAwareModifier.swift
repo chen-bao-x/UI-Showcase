@@ -12,7 +12,7 @@ import SwiftUI
 struct KeyboardAwareModifieradfasf: View {
     @State private var name = "dasfafasfsafasf"
     var body: some View {
-         VStack {
+        VStack {
             Spacer()
             TextField("", text: $name)
                 .padding()
@@ -47,6 +47,8 @@ struct KeyboardAwareModifier: ViewModifier {
             .padding(.bottom, keyboardHeight)
             .onReceive(keyboardHeightPublisher) { self.keyboardHeight = $0 }
 //            .animation(Animation.spring(response: 0.45, dampingFraction: 0.8, blendDuration: 4000.0))// MARK:  最接近的版本
+        
+            .animation(Animation.easeInOut(duration: 0.3))
         
 //            .animation(Animation.spring(response: 0.45, blendDuration: 1.0)) // MARK: 最接近的版本
         
@@ -103,5 +105,72 @@ struct KeyboardAwareModifier: ViewModifier {
 extension View {
     func keyboardAwarePadding() -> some View {
         return ModifiedContent(content: self, modifier: KeyboardAwareModifier())
+    }
+}
+
+struct asdfljasdsdfasfasdf<T: View>: UIViewControllerRepresentable {
+    init(@ViewBuilder view: @escaping () -> T) {
+        self.view = view
+    }
+    
+    let view: () -> T
+    
+    func makeUIViewController(context: Context) -> dsafdafadfadfsdf<T> {
+        let a = asdfljasdsdfasfasdf.dsafdafadfadfsdf<T>()
+        a.content = self.view()
+        
+        return a
+    }
+    
+    func updateUIViewController(_ uiViewController: dsafdafadfadfsdf<T>, context: Context) {}
+    
+    class dsafdafadfadfsdf<Content: View>: UIViewController {
+        var content: Content!
+        
+        override func viewDidLoad() {
+            NotificationCenter.default
+                .addObserver(self,
+                             selector: #selector(self.onKeyboardWillChangeFrame),
+                             name: UIResponder.keyboardWillShowNotification,
+                             object: nil)
+            
+            let a = UIHostingController(rootView: self.content!).view!
+            self.view.frame = a.frame
+//            self.view.addSubview(UIHostingController(rootView: self.content!).view)
+            self.view.addSubview(a)
+        }
+        
+        /**
+         键盘显示隐藏事件监听
+         */
+        @objc func onKeyboardWillChangeFrame(notification: NSNotification) {
+            // 1、将通知中的数据转换成NSDictionary
+            let dict = NSDictionary(dictionary: notification.userInfo!)
+            
+            // 2、获取键盘最后的Frame值
+            let keyboardFrame = dict[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+            
+            // 3、获取键盘移动值
+            let ty = keyboardFrame.origin.y - view.frame.height
+            
+            // 4、获取键盘弹出动画事件
+            let duration = dict[UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+            UIView.animate(withDuration: duration, animations: { () -> Void in
+                //            5、设置整个屏幕随键盘移动
+                //            self.toolbar.transform =
+//                self.view.transform =
+                self.view.subviews[0].transform =
+                    CGAffineTransform(translationX: 0, y: ty)
+            })
+            
+            //        键盘弹出隐藏所执行的操作数据
+            //        UIKeyboardAnimationCurveUserInfoKey = 7;
+            //        UIKeyboardAnimationDurationUserInfoKey = "0.25";  键盘弹出/隐藏时动画时间
+            //        UIKeyboardBoundsUserInfoKey = "NSRect: {{0, 0}, {375, 258}}";
+            //        UIKeyboardCenterBeginUserInfoKey = "NSPoint: {187.5, 796}";
+            //        UIKeyboardCenterEndUserInfoKey = "NSPoint: {187.5, 538}";
+            //        UIKeyboardFrameBeginUserInfoKey = "NSRect: {{0, 667}, {375, 258}}";
+            //        UIKeyboardFrameEndUserInfoKey = "NSRect: {{0, 409}, {375, 258}}";
+        }
     }
 }

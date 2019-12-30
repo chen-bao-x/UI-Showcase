@@ -43,7 +43,8 @@ struct DragGesture_UI_Showcase: View {
             .frame(width: 100, height: 100, alignment: .center)
             .offset(
                 x: viewState.width + dragState.translation.width,
-                y: viewState.height + dragState.translation.height
+                y: viewState.height + (dragState.translation.height)
+//                y: viewState.height + (dragState.translation.height / 2)
             )
             .animation(nil)
             .shadow(radius: dragState.isActive ? 8 : 0)
