@@ -46,9 +46,12 @@ struct KeyboardAwareModifier: ViewModifier {
         content
             .padding(.bottom, keyboardHeight)
             .onReceive(keyboardHeightPublisher) { self.keyboardHeight = $0 }
+            .animation(Animation
+                .spring(response: 0.4, dampingFraction: 0.9, blendDuration: 1.0))
+        
 //            .animation(Animation.spring(response: 0.45, dampingFraction: 0.8, blendDuration: 4000.0))// MARK:  最接近的版本
         
-            .animation(Animation.easeInOut(duration: 0.3))
+//            .animation(Animation.easeInOut(duration: 0.3))
         
 //            .animation(Animation.spring(response: 0.45, blendDuration: 1.0)) // MARK: 最接近的版本
         

@@ -10,11 +10,16 @@ import Combine
 import nav
 import SwiftUI
 
-struct halfModal: View {
+struct halfModal<Content: View>: View {
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    let content: () -> Content
+
     var body: some View {
         VStack {
-            Text("hello 世界")
-            Text("hello 世界")
+            self.content()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         .background(Color.green)
@@ -80,7 +85,8 @@ struct halfModalAndGesture: ViewModifier {
         .animation(self.gestureOffset.height == 0 ?
             Animation.spring(response: 0.2, dampingFraction: 0.7, blendDuration: 1) : .none) /// 只在 拖动结束时的位置 归位 才 使用 动画
 
-        .gesture(a)
+            .gesture(a, including: GestureMask.gesture)
+//        .gesture(a)
     }
 
     @GestureState private var gestureOffset: CGSize = .zero

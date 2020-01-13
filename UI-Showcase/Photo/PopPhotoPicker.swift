@@ -6,59 +6,49 @@
 //  Copyright © 2019 chenbao. All rights reserved.
 //
 
+import Combine
 import Photos
 import SwiftUI
-
-class selected: ObservableObject {
-    @Published var selected: [Int] = [] {
-        didSet {
-            print(self.selected)
-        }
-    }
-}
-
-var S = selected()
 
 struct PopPhotoPicker: View {
     var a: PHFetchResult<PHAsset> = PhotoManager.SmartAlbums.recentlyAdded
     
-    @EnvironmentObject var s: selected
+    @State var selectedImages: [PHAsset] = []
     
     var body: some View {
         VStack {
-            if !self.s.selected.isEmpty { // 不佳这个 条件判断, 这个 Scrol View 就显示u吐出来.........
+            if !self.selectedImages.isEmpty {
+                ForEach(0..<self.selectedImages.count, id: \.self) { i in
+                    
+                    HighQualityImage(asset: self.selectedImages[i])
+                }
+                
+            } else {
                 ScrollView(Axis.Set.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(0..<self.s.selected.count, id: \.self) { i in
+                        ForEach(0..<self.a.count, id: \.self) { i in
                             
-                            Selector(asset: self.a[self.s.selected[i]], i: i)
+                            Selector(asset: self.a[i], i: i, selectedImages: self.$selectedImages)
                         }
-                    }
-                }
-            }
-            Text("hello")
-            ScrollView(Axis.Set.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0..<self.a.count, id: \.self) { i in
-                        
-                        Selector(asset: self.a[i], i: i)
                     }
                 }
             }
         }
     }
+    
+    private let pub = PassthroughSubject<UIImage, Never>()
     
     struct Selector: View {
         let asset: PHAsset
         let i: Int
         
-        @EnvironmentObject var s: selected
+        @Binding var selectedImages: [PHAsset]
         
         @State private var select: Bool = false
         
         var body: some View {
             ZStack {
-                SingleImage(a: asset)
+                CorneredImage(asset: self.asset)
                 
                 Image(systemName: "plus.circle.fill")
                     .font(.largeTitle)
@@ -67,26 +57,97 @@ struct PopPhotoPicker: View {
                         self.select ? Color.green : Color.clear
                     )
             }
-            .onTapGesture {
-                self.select.toggle()
+            .onTapGesture(perform: self.f)
+        }
+        
+        private func f() {
+            self.select.toggle()
+            
+            if self.select {
+                //                    self.s.selected.append(self.i)
+                self.selectedImages.append(self.asset)
                 
-                if self.select {
-                    self.s.selected.append(self.i)
-                    
-                } else {
-                    self.s.selected.removeAll { (p) -> Bool in
-                        self.i == p
-                    }
+            } else {
+                //                    self.s.selected.removeAll { self.i == $0 }
+                self.selectedImages.removeAll { (p: PHAsset) -> Bool in
+                    p == self.asset
                 }
-                
-                print(self.select)
             }
+            
+            print(self.select)
         }
     }
 }
 
-// struct PopPhotoPicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PopPhotoPicker()
-//    }
-// }
+struct CorneredImage: View {
+    init(asset: PHAsset, size: CGSize = .init(width: 100, height: 100), img: Image? = nil) {
+        self.asset = asset
+        self.size = size
+        
+        self._img = .init(initialValue: img)
+    }
+    
+    let asset: PHAsset
+    
+    let size: CGSize
+    
+    @State var img: Image? = nil
+    
+    var body: some View {
+        VStack {
+            (self.img ?? Image("p1"))
+                .resizable()
+                .aspectRatio(contentMode: ContentMode.fill)
+                
+                .onAppear(perform: self.f)
+        }
+        
+        .frame(width: self.size.width, height: self.size.height)
+        .cornerRadius(20)
+        .clipped()
+    }
+    
+    func f() {
+        DispatchQueue.global().async {
+            let size: CGSize = self.size
+            
+            PHCachingImageManager()
+                .requestImage(for: self.asset,
+                              targetSize: size,
+                              contentMode: .aspectFill,
+                              options: nil) { uiImage, _ in
+                    
+                    if let img = uiImage {
+                        let a = resizeImage(image: img,
+                                            targetSize: size)
+                        let aa = Image(uiImage: a)
+                        DispatchQueue.main.async {
+                            self.img = aa
+                        }
+                    }
+                }
+        }
+    }
+}
+
+struct HighQualityImage: View {
+    let asset: PHAsset
+    
+    @State private var image: Image = Image("p1")
+    
+    var body: some View {
+        self.image
+            .resizable()
+            .scaledToFit()
+            .cornerRadius(20)
+            .clipped()
+            .onAppear {
+                PhotoManager.highQualityImageRequester(asset: self.asset, pub: self.pub)
+            }
+            .onReceive(self.pub) { (u: UIImage) in
+                self.image = Image(uiImage: u)
+            }
+    }
+    
+    let pub = PassthroughSubject<UIImage, Never>()
+}

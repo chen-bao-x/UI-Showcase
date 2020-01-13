@@ -22,7 +22,7 @@ struct frame_PropertyChanger: View {
     @Binding var f: AllPropertys.frame
 
     var body: some View {
-        List {
+        Group {
             VStack(alignment: .leading) {
                 "设置 frame 前, 先显示 border 可以更直观的看到变化"
                 Toggle(isOn: self.$f.setFrame) { Text("设置 frame") }

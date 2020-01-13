@@ -9,13 +9,12 @@
 import Combine
 import nav
 import SwiftUI
+
 extension String: View {
     public var body: some View {
         Text(self)
     }
 }
-
-
 
 struct ContentView: View {
     @State private var v: Float = 0
@@ -28,8 +27,6 @@ struct ContentView: View {
                 Group {
                     NavigationLink(destination: KeyboardAwareModifieradfasf()) { "KeyboardAwareModifieradfasf" }
                     NavigationLink(destination: GeastureConflict()) { "GeastureConflict" }
-
-                    NavigationLink(destination: halfModal()) { "halfModal" }
 
                     NavigationLink(destination: ViewModifers()) { "ViewModifers" }
 
@@ -75,11 +72,7 @@ struct ContentView: View {
         }
 
         .navigationViewStyle(StackNavigationViewStyle())
-
-//        .overlay( halfModal().edgesIgnoringSafeArea(Edge.Set.bottom) )
     }
-
-    
 
     let uuu = UIRefreshControl()
 
@@ -161,41 +154,4 @@ struct 可折叠Section<Content: View>: View {
     }
 
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-}
-
-struct adsfadsfdasf: UIViewControllerRepresentable {
-    typealias UIViewControllerType = UIViewController
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<adsfadsfdasf>) -> adsfadsfdasf.UIViewControllerType {
-        controll()
-    }
-
-    func updateUIViewController(_ uiViewController: adsfadsfdasf.UIViewControllerType, context: UIViewControllerRepresentableContext<adsfadsfdasf>) {}
-
-    class controll: UIViewController {
-        var keyboardHeight: CGFloat!
-
-        var bottomConstraint: NSLayoutConstraint!
-
-        // This is to get the keyboyard height
-        override func viewWillAppear(_ animated: Bool) {
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(keyboardWillShow),
-                name: UIResponder.keyboardWillShowNotification,
-                object: nil
-            )
-        }
-
-        @objc func keyboardWillShow(_ notification: Notification) {
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardRectangle = keyboardFrame.cgRectValue
-                keyboardHeight = keyboardRectangle.height
-                UIView.animate(withDuration: 0.5) {
-                    self.bottomConstraint.constant = self.keyboardHeight
-                    self.view.layoutIfNeeded()
-                }
-            }
-        }
-    }
 }

@@ -24,7 +24,6 @@ struct PropertyChanger: ViewModifier {
     }
     
     var Changer: some View {
-//        NavigationView {
         List {
             可折叠Section(headerTitle: Text("border")) {
                 borderChanger(border: self.$allProperty.boder)
@@ -33,18 +32,7 @@ struct PropertyChanger: ViewModifier {
             可折叠Section(headerTitle: Text("Frame Changer")) {
                 frame_PropertyChanger(f: self.$allProperty.framePropertys)
             }
-            
-//                NavigationLink(destination:
-//                    borderChanger(border: self.$allProperty.boder)
-//
-//                ) { "border" }
-//                NavigationLink(destination:
-//                    frame_PropertyChanger(f: self.$allProperty.framePropertys)) {
-//                    "frame"
-//                }
         }
-//        }.navigationBarTitle(Text(""), displayMode: .inline)
-//            .navigationBarHidden(true)
     }
     
     @Environment(\.presentationMode) var isPresented: Binding<PresentationMode>
@@ -71,18 +59,10 @@ struct contextToPopover<Content: View>: ViewModifier {
                         "edit view modifier"
                     }
                 }
-            
-            if self.sheetIsPresented {
-                GeometryReader { _ in
-                    
-                    缩放按钮(back: { self.sheetIsPresented.toggle() }) {
-                        self.content()
-                    }
-//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                .sheet(isPresented: self.$sheetIsPresented) {
+                    self.content()
                 }
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
-                .modifier(halfModalAndGesture())
-            }
         }
         .onDisappear {
             self.onDismiss()
@@ -115,7 +95,6 @@ struct contextToPopover<Content: View>: ViewModifier {
                     }
                     .background(Color.white.opacity(0.5))
                     
-                    
                     self.content()
 //                        .gesture(DragGesture())
                 }
@@ -134,36 +113,3 @@ struct contextToPopover<Content: View>: ViewModifier {
     
     @State private var sheetIsPresented: Bool = false
 }
-
-// struct contextToPopover<Content: View>: ViewModifier {
-//    init(onDismiss: @escaping () -> () = {}, @ViewBuilder 被弹出: @escaping () -> Content) {
-//        self.onDismiss = onDismiss
-//
-//        self.content = 被弹出
-//    }
-//
-//    var content: () -> Content
-//
-//    var onDismiss: () -> ()
-//
-//    func body(content: _ViewModifier_Content<contextToPopover>) -> some View {
-//        content
-//            .sheet(isPresented: $sheetIsPresented) {
-//                NavigationView {
-//                    self.content()
-//                        .navigationBarTitle(Text("Property Changer"))
-//                        .navigationBarItems(trailing: Button(action: { self.sheetIsPresented.toggle() }) { "完成" })
-//                }
-//            }
-////            .popover(isPresented: $sheetIsPresented) { self.content() }
-//            .contextMenu {
-//                Button(action: {
-//                    self.sheetIsPresented.toggle()
-//                }) {
-//                    "edit view modifier"
-//                }
-//            }
-//    }
-//
-//    @State private var sheetIsPresented: Bool = false
-// }

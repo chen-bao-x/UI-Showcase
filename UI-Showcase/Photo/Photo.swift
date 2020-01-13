@@ -35,7 +35,7 @@ struct Photo: View {
             if self.有权限么.vaule {
                 List {
                     NavigationLink(destination: PopPhotoPicker()
-                        .environmentObject(S)) {
+                       ) {
                         Text("PopPhotoPicker")
                     }
                     NavigationLink(destination: hehe(assets: PhotoManager.allPhotos)) {

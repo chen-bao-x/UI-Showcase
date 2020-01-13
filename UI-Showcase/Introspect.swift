@@ -455,6 +455,8 @@ extension View {
                 guard let viewHost = Introspect.findViewHost(from: introspectionView) else {
                     return nil
                 }
+               let a = UITraitCollection.current
+                
                 return Introspect.previousSibling(containing: UISegmentedControl.self, from: viewHost)
             },
             customize: customize
